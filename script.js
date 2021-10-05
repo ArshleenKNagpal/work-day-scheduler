@@ -13,14 +13,23 @@ currentDay.text(today);
 
 
 saveButtonEl.on('click',function(){
-console.log(saveButtonEl)
 
-    // let textArea = $('');
-    // textArea.text();
-    // saveButtonEl.append(textArea)
-    // console.log(textArea.value);
+    const text = $(this).siblings("textarea").val();
+    const time = $(this).siblings("div").text();
+  
+    console.log(text);
+    console.log(time);
+  
+    // localStorage.setItem(time, text);
+
+    localStorage.setItem("tasks", JSON.stringify(time, text));
+
+    // let userInput = JSON.parse(localStorage.getItem(time, text))
 
 })
+
+
+
 
 
 todaysDate()
