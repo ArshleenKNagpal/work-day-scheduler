@@ -11,18 +11,19 @@ function todaysDate() {
 
 saveButtonEl.on('click', function () {
     let text = $(this).siblings("textarea").val();
-    let time = $(this).siblings("div").text();
+    // let time = $(this).siblings("div").text();
 
+         
+
+    let time = $(this).siblings("div").attr("id");
+    localStorage.setItem(time, text);
+    
     console.log(text);
     console.log(time);
-
-    localStorage.setItem(time, text);
-    // localStorage.setItem("tasks", JSON.stringify(time, text));
-
-    // let userInput = JSON.parse(localStorage.getItem(time, text))
-
     console.log("thank you, your " + text + " has been saved");
 })
+
+
 
 
 // HIGHLIGHTING ROW BASED ON TIMES
@@ -37,6 +38,7 @@ let checkTime = function () {
 
     //loop through taskarea classes
     for (let i = 0; i < time.length; i++) {
+
 
         //Get element i's ID as a string
         let elementID = $(time[i].id);
@@ -56,10 +58,17 @@ let checkTime = function () {
             $(manipID).addClass("present");
         }
 
+        let userInput = localStorage.getItem(time[i].id)
+         
+        if(userInput){
+            time[i].value = userInput
+    
     }
+}
 }
 
 todaysDate()
 checkTime()
 console.log(moment().format('hh'))
 console.log($(this).siblings("div").text())
+
