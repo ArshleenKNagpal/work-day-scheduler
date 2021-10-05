@@ -1,49 +1,42 @@
 let currentDay = $('#currentDay');
-// let container = $('.container');
 let saveButtonEl = $('.col-1.fas.fa-save');
 let textArea = $('.textarea');
 
 
 function todaysDate() {
-let today = moment().format('dddd MMMM Do');
-currentDay.text(today);
+    let today = moment().format('dddd MMMM Do');
+    currentDay.text(today);
 }
 
 
-saveButtonEl.on('click',function(){
-
+saveButtonEl.on('click', function () {
     let text = $(this).siblings("textarea").val();
     let time = $(this).siblings("div").text();
-  
+
     console.log(text);
     console.log(time);
-  
+
     localStorage.setItem(time, text);
     // localStorage.setItem("tasks", JSON.stringify(time, text));
 
     // let userInput = JSON.parse(localStorage.getItem(time, text))
 
     console.log("thank you, your " + text + " has been saved");
-    
 })
 
-    // saveButtonEl.html = "thank you, your " + localStorage.getItem("text");
 
-    // ----------------------------------------------------------------------------------------
+// HIGHLIGHTING ROW BASED ON TIMES
 
-    //Change textarea background color based on time
 let checkTime = function () {
 
     //Get Current time
     let currentTime = moment().format('hh');
 
-    //get all elements with class "taskarea"
-    // let timeBlockElements = textArea;
-    let time = $(this).siblings("div").text();
 
+    let time = $(".description");
 
     //loop through taskarea classes
-    for (let i = 0 ; i < time.length ; i++) {
+    for (let i = 0; i < time.length; i++) {
 
         //Get element i's ID as a string
         let elementID = $(time[i].id);
@@ -66,8 +59,7 @@ let checkTime = function () {
     }
 }
 
-
-console.log(moment().format('hh'))
-
-
 todaysDate()
+checkTime()
+console.log(moment().format('hh'))
+console.log($(this).siblings("div").text())
